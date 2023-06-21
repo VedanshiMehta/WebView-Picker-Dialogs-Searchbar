@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C10_Exercises.View.Exercise5.Exercise5">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     Spacing="10">
+            <Image Source="left_arrow"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="goBackTapped"
+                                          Tapped="GoBackTapped_Tapped"
+                                          NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Web View"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="FillAndExpand"
+                   FontSize="18"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                />
+            <Image Source="right_arrow"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="goNextTapped"
+                                          Tapped="GoNextTapped_Tapped"
+                                          NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ScrollView>
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand">
+                <WebView x:Name="webView"
+                     Source="https://learn.microsoft.com/dotnet/maui"/>
+                <ActivityIndicator x:Name="indicator"
+                               VerticalOptions="Center"/>
+
+            </Grid>
+            <Button Text="Launch in browser"
+                x:Name="buttonLaunch"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End"
+                BackgroundColor="CadetBlue"
+                Padding="20"
+                CornerRadius="30"
+                 Clicked="ButtonLaunch_Clicked"  />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

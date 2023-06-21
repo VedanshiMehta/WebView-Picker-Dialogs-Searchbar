@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C10_Exercises.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="10"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Button
+                x:Name="buttonDisplayAlert"
+                Text="Display Alert Box"
+               Clicked="ButtonDisplayAlert_Clicked"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="buttonDisplayActionSheet"
+                Text="Display Action Sheet"
+                Clicked="ButtonDisplayActionSheet_Clicked"
+                HorizontalOptions="Center" />
+
+            <Button HorizontalOptions="Center"
+                    x:Name="buttonDisplayPrompt"
+                    Clicked="ButtonDisplayPrompt_Clicked"
+                    Text="Display prompt"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

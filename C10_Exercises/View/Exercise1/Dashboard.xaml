@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C10_Exercises.View.Exercise1.Dashboard"
+             xmlns:viewModel="clr-namespace:C10_Exercises.ViewModel">
+    <ContentPage.BindingContext>
+        <viewModel:LoginDashboardViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style x:Key="smallBlackLabelStyle" TargetType="Label">
+            <Setter Property="HorizontalOptions"
+                    Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions"
+                    Value="Center"/>
+            <Setter Property="FontAttributes"
+                    Value="Bold"/>
+            <Setter Property="FontSize"
+                    Value="16"/>
+            <Setter Property="TextColor"
+                    Value="Black"/>
+        </Style>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label Text="Profile"
+                   FontSize="30"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout Padding="20"
+                 BackgroundColor="WhiteSmoke">
+        <StackLayout Orientation="Horizontal"
+                     Spacing="20">
+            <Border StrokeShape="RoundRectangle 60"
+                    Stroke="White"
+                    HorizontalOptions="Start">
+                <Image Source="{Binding LoginResponseModel.Image}"
+                   HeightRequest="90"
+                   WidthRequest="90"
+                   Aspect="AspectFill"/>
+            </Border>
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand"
+                         Spacing="5">
+                <StackLayout Orientation="Horizontal"
+                         Spacing="3">
+                    <Label Text="{Binding LoginResponseModel.FirstName}"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       />
+                    <Label Text="{Binding LoginResponseModel.LastName}"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       />
+                </StackLayout>
+                <Label Text="{Binding LoginResponseModel.Email}"
+                       TextColor="Gray"
+                       FontAttributes="Bold"
+                       FontSize="16"
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              ColumnSpacing="20"
+              Margin="0,40,0,0"
+              RowDefinitions="*,*,*,*,*,*,*"
+              ColumnDefinitions=".1*,.9*">
+            <Image Source="usericon"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HeightRequest="20"
+                   WidthRequest="20"/>
+            <Label Text="My Profile"
+                   Style="{StaticResource smallBlackLabelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="0"/>
+            <Image Source="settingicon"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   HeightRequest="20"
+                   WidthRequest="20"/>
+            <Label Text="Settings"
+                   Style="{StaticResource smallBlackLabelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="1"/>
+
+            <Image Source="bellicon"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   HeightRequest="20"
+                   WidthRequest="20"/>
+
+            <Label Text="Notifications"
+                   Style="{StaticResource smallBlackLabelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="2"/>
+
+            <Image Source="listicon"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   HeightRequest="20"
+                   WidthRequest="20"/>
+
+            <Label Text="Transaction History"
+                   Style="{StaticResource smallBlackLabelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="3"/>
+            <Image Source="helpicon"
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   HeightRequest="20"
+                   WidthRequest="20"/>
+
+            <Label Text="FAQ"
+                   Style="{StaticResource smallBlackLabelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="4"/>
+            <Image Source="infoicon"
+                   Grid.Row="5"
+                   Grid.Column="0"
+                   HeightRequest="20"
+                   WidthRequest="20"/>
+
+            <Label Text="About"
+                   Style="{StaticResource smallBlackLabelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="5"/>
+
+            <Image Source="logouticon"
+                   Grid.Row="6"
+                   Grid.Column="0"
+                   HeightRequest="20"
+                   WidthRequest="20"/>
+
+            <Label Text="Logout"
+                   Style="{StaticResource smallBlackLabelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="6">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                          NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

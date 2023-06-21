@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C10_Exercises.View.Exercise3.Exercise3"
+             xmlns:viewModel="clr-namespace:C10_Exercises.ViewModel">
+    <ContentPage.BindingContext>
+        <viewModel:ChatDataViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <Style x:Key="smallLabelStyle" TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="14"/>
+            <Setter Property="HorizontalOptions"
+                    Value="Start"/>
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout BackgroundColor="#1D1A21">
+            <StackLayout BackgroundColor="#29272C"
+                         Padding="10"
+                         Spacing="10">
+                <Label Text="Swipe to delete"
+                       FontSize="40"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="StartAndExpand"/>
+                <Label Text="Swipe left the messages to reveal starring and deleting options"
+                       Style="{StaticResource smallLabelStyle}"
+                       TextColor="White"/>
+            </StackLayout>
+            <CollectionView Margin="0,10,0,0"
+                                VerticalOptions="FillAndExpand"
+                                ItemsSource="{Binding ChatDataList}"
+                                x:Name="collectionViewChat">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                           ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+
+                                        <SwipeItemView  CommandParameter="{Binding}"
+                                                        Command="{Binding Source={x:Reference collectionViewChat}, Path=BindingContext.DeleteChatCommand}">
+                                            <Border Stroke="#BF5F64"
+                                                    StrokeShape="RoundRectangle 50"
+                                                    BackgroundColor="#BF5F64"
+                                                    WidthRequest="100">
+                                                <StackLayout HorizontalOptions="Center"
+                                                                VerticalOptions="Center">
+                                                    <Border BackgroundColor="#BF5F64"
+                                                            Stroke="#BF5F64"
+                                                            StrokeShape="RoundRectangle 30"
+                                                            VerticalOptions="Center"
+                                                            HorizontalOptions="Center"
+                                                            Padding="20">
+                                                        <Image Source="deleteicon"
+                                                               BackgroundColor="#BF5F64"/>
+                                                    </Border>
+                                                </StackLayout>
+                                            </Border>
+                                        </SwipeItemView>
+
+
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <StackLayout>
+                                    <Border Stroke="#37343B"
+                                            Background="#37343B"
+                                            StrokeShape="RoundRectangle 15"
+                                            Padding="15">
+
+                                        <StackLayout Orientation="Horizontal"
+                                                    Spacing="10"
+                                                    >
+                                            <Image Source="{Binding ProfilePicture}"
+                                                   HeightRequest="60"
+                                                   WidthRequest="60"
+                                                   HorizontalOptions="Start"/>
+
+                                            <StackLayout HorizontalOptions="FillAndExpand"
+                                                          VerticalOptions="CenterAndExpand">
+                                                <HorizontalStackLayout HorizontalOptions="FillAndExpand"
+                                                                        Spacing="10">
+                                                    <Label x:Name="labelName"
+                                                           Text="{Binding UserName}"
+                                                           TextColor="White"
+                                                           Style="{StaticResource smallLabelStyle}"
+                                                           FontAttributes="Bold"/>
+                                                    <HorizontalStackLayout>
+                                                        <Border Stroke="#BF5F64"
+                                                                BackgroundColor="#BF5F64"
+                                                                HeightRequest="5"
+                                                                WidthRequest="5"
+                                                                StrokeShape="RoundRectangle 3"
+                                                                Padding="3"/>
+                                                        <Label x:Name="labelWork"
+                                                                Text="{Binding Work}"
+                                                               TextColor="#BF5F64"
+                                                               Style="{StaticResource smallLabelStyle}"
+                                                                FontAttributes="Bold"/>
+                                                    </HorizontalStackLayout>
+                                                </HorizontalStackLayout>
+                                                <Label x:Name="labelEmail"
+                                                       Text="{Binding Message}"
+                                                       Style="{StaticResource smallLabelStyle}"
+                                                       MaxLines="1"
+                                                       LineBreakMode="TailTruncation"
+                                                       TextColor="White"/>
+                                            </StackLayout>
+                                            <Image HorizontalOptions="End"
+                                                   VerticalOptions="Center"
+                                                   Source="{Binding OptionImage}"/>
+                                        </StackLayout>
+                                    </Border>
+                                </StackLayout>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

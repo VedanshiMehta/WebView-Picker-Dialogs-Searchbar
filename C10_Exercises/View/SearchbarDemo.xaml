@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C10_Exercises.View.SearchbarDemo"
+             Title="SearchbarDemo"
+             xmlns:viewModel="clr-namespace:C10_Exercises.ViewModel">
+    <ContentPage.BindingContext>
+        <viewModel:SearchbarDemoViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout>
+        
+        <SearchBar VerticalOptions="Center"
+                    CancelButtonColor="Red"
+                    Placeholder="Search here..."
+                   x:Name="searchBar"
+                   SearchCommand="{Binding PerformSearchActionCommand}"
+                    SearchCommandParameter="{Binding Text,Source={x:Reference searchBar}}" />
+        
+        <Label HorizontalOptions="Center"
+               TextColor="Navy"
+               FontSize="16"
+               FontAttributes="Bold"
+               Text="{Binding Text}"/>
+
+    </VerticalStackLayout>
+</ContentPage>
